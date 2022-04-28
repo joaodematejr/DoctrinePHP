@@ -17,6 +17,12 @@ class Aluno
      * @Column(type="string")
      */
     private $nome;
+    private $telefones;
+
+    public function __construct($telefones)
+    {
+        $this->telefones = $telefones;
+    }
 
     public function getId(): int
     {
@@ -31,6 +37,12 @@ class Aluno
     public function setNome(string $nome): self
     {
         $this->nome = $nome;
+        return $this;
+    }
+
+    public function addTelefones(Telefone $telefone): self
+    {
+        $this->telefones[] = $telefone;
         return $this;
     }
 }
