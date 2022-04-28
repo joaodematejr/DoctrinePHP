@@ -5,42 +5,32 @@ namespace Alura\Doctrine\Entity;
 /**
  * @Entity
  */
-class Aluno {
+class Aluno
+{
     /**
      * @Id
      * @GeneratedValue
      * @Column(type="integer")
      */
     private $id;
-    private $nome;
-    
-
     /**
-     * @Column(type="string", nullable=false)
+     * @Column(type="string")
      */
-    public function getId()
+    private $nome;
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * Get the value of nome
-     */
     public function getNome(): string
     {
         return $this->nome;
     }
 
-    /**
-     * Set the value of nome
-     *
-     * @return  self
-     */
     public function setNome(string $nome): self
     {
         $this->nome = $nome;
-
         return $this;
     }
 }
-
