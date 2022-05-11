@@ -18,6 +18,8 @@ class Telefone
      */
     private $numero;
 
+    private $aluno;
+
     public function getId(): int
     {
         return $this->id;

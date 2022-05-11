@@ -17,11 +17,14 @@ class Aluno
      * @Column(type="string")
      */
     private $nome;
+    /**
+     * @OneToMany(targetEntity="Telefone", mappedBy="aluno")
+     */
     private $telefones;
 
-    public function __construct($telefones)
+    public function __construct()
     {
-        $this->telefones = $telefones;
+        $this->telefones = new ArrayCollection();
     }
 
     public function getId(): int
@@ -40,9 +43,26 @@ class Aluno
         return $this;
     }
 
-    public function addTelefones(Telefone $telefone): self
+    public function addTelefones(Telefone $telefone)
     {
-        $this->telefones[] = $telefone;
+        $this->telefones->add($telefone);
+        $telefone->setAluno($this);
+        return $this;
+    }
+    
+    public function getTelefones(): Collection
+    {
+        return $this->telefones;
+    }
+
+    public function getAluno(): Aluno
+    {
+        return $this->aluno;
+    }
+
+    public function setAluno(Aluno $aluno): self
+    {
+        $this->aluno = $aluno;
         return $this;
     }
 }
